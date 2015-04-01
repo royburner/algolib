@@ -1,4 +1,3 @@
 # algolib
-personal lib to have fun with Rust
-
-to begin with some very simple algorithm taken from coursera Algorithms, Part I course
+My personal lib to have fun with Rust.
+To begin with some very simple algorithms taken from "Algorithms, Part I" course on coursera.
