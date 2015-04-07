@@ -1,14 +1,33 @@
-pub fn connected(a:&Vec<usize>,p:usize,q:usize)->bool{
-	a[p]==a[q]
+pub struct Board{
+	root : Vec<usize>,
 }
 
-pub fn union(mut a:Vec<usize>,p:usize,q:usize)->Vec<usize>{
-	let p_val = a[p];
-	let q_val = a[q];
-	for i in 0..a.len(){
-		if a[i]==p_val {
-			a[i]=q_val;
+impl Board{
+	
+	pub fn new(size:usize) -> Board{
+		let mut root = vec![0;size];
+		for i in 0..size{
+			root[i] = i;
+		}
+		Board {root : root}
+	}
+	
+	pub fn from(root:Vec<usize>) -> Board{
+		Board {root : root}
+	}
+	
+	pub fn connected(&self, p:usize,q:usize)->bool{
+		self.root[p]==self.root[q]
+	}
+	
+	pub fn union(&mut self, p:usize,q:usize){
+		let p_val = self.root[p];
+		let q_val = self.root[q];
+		for i in 0..self.root.len(){
+			if self.root[i]==p_val {
+				self.root[i]=q_val;
+			}
 		}
 	}
-	a
+	
 }
