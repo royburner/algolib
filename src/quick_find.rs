@@ -1,4 +1,4 @@
-pub struct Board{
+﻿pub struct Board{
 	root : Vec<usize>,
 }
 

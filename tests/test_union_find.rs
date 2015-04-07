@@ -1,4 +1,4 @@
-extern crate algolib;
+﻿extern crate algolib;
 
 use algolib::*;
 
