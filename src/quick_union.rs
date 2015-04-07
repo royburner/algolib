@@ -1,11 +1,19 @@
 pub struct Board{
-	root: Vec<usize>,
-	sz:Vec<usize>,
+	root : Vec<usize>,
+	sz : Vec<usize>,
 }
 
 impl Board{
 
-	pub fn new(root:Vec<usize>) -> Board{
+	pub fn new(size:usize) -> Board{
+		let mut root = vec![0;size];
+		for i in 0..size{
+			root[i] = i;
+		}
+		Board {root : root, sz : vec![1;size]}
+	}
+
+	pub fn from(root:Vec<usize>) -> Board{
 		let len = root.len();
 		Board {root : root, sz : vec![1;len]}
 	}
@@ -36,6 +44,5 @@ impl Board{
 				self.sz[root_p] += self.sz[root_q];
 			}
 		}
-		
 	}
 }

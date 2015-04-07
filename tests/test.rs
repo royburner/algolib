@@ -34,14 +34,14 @@ fn test_quick_find_union(){
 
 #[test]
 fn test_quick_union_root(){
-	let mut a = quick_union::Board::new(vec![0, 1, 0]);
+	let mut a = quick_union::Board::from(vec![0, 1, 0]);
 	assert!(a.root(0)==0);
 	assert!(a.root(2)==0);
 }
 
 #[test]
 fn test_quick_union_connected(){
-	let mut a = quick_union::Board::new(vec![0, 1, 0]);
+	let mut a = quick_union::Board::from(vec![0, 1, 0]);
 	assert!(a.connected(0, 0));
 	assert!(a.connected(0, 2));
 	assert!(!a.connected(0, 1));
@@ -49,7 +49,18 @@ fn test_quick_union_connected(){
 
 #[test]
 fn test_quick_union_union(){
-	let mut a = quick_union::Board::new(vec![0, 1, 2]);
+	let mut a = quick_union::Board::from(vec![0, 1, 2]);
+	assert!(!a.connected(0,1));
+	a.union(0,1);
+	assert!(a.connected(0,1));
+	a.union(0,2);
+	assert!(a.connected(0,1));
+	assert!(a.connected(1,2));
+}
+
+#[test]
+fn test_quick_union_new(){
+	let mut a = quick_union::Board::new(3);
 	assert!(!a.connected(0,1));
 	a.union(0,1);
 	assert!(a.connected(0,1));
