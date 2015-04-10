@@ -15,15 +15,14 @@ impl Board{
 	pub fn sort(&mut self){
 	
 		//determines 3x+1 intervall
-		let mut x : usize = 0;
+		let mut x = 0;
 		while 3*x + 1 < self.val.len(){
 			x+=1;
 		}
 		
 		//chaining h sort on decreasing h intervall
-		let mut i : i32 = x as i32;
-		while i >= 0 {
-			let h = (3 * i + 1) as usize;
+		for i in (0..x).rev() {
+			let h = 3 * i + 1;
 			
 			for j in h..self.val.len(){
 				let mut k = j;
@@ -33,9 +32,7 @@ impl Board{
 					self.val[k-h] = valk;
 					k -= h;
 				}
-				
 			}
-			i=i-1;
 		}
 	}
 }
