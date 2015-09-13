@@ -25,11 +25,8 @@ impl<T:PartialOrd> MultiSort for Vec<T>{
 	}
 	
 	fn shell_sort(&mut self){
-		//determines 3x+1 intervall
-		let mut x = 0;
-		while 3*x + 1 < self.len(){
-			x+=1;
-		}
+		//determines biggest 3x+1 intervall
+		let x = ((self.len() - 1) / 3) as usize;
 		
 		//chaining h sort on decreasing h intervall
 		for i in (0..x).rev() {
